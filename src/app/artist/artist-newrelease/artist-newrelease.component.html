@@ -1,0 +1,840 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+
+            <mat-stepper #stepper>
+                <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+                    <form [formGroup]="firstFormGroup">
+
+                        <ng-template matStepLabel>Release Details</ng-template>
+                        <h3>Upload Your Release</h3>
+                        <h4 class="mt-3"><span class="step-number">1</span>Release Details</h4>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Release Title</mat-label>
+                                    <input matInput placeholder="Release Title" formControlName="firstCtrl" required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6 ">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Add a Main Artist</mat-label>
+                                    <mat-select>
+                                        <mat-option *ngFor="let food of foods" [value]="food.value">
+                                            {{food.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <button mat-raised-button color="primary" class="mx-3">Create Artist</button>
+                                <button mat-raised-button color="warn">Remove</button>
+                            </div>
+
+                            <mat-checkbox class="example-margin">Various Artists (more than 4 main
+                                artists)</mat-checkbox>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Release Date</mat-label>
+                                    <input matInput [matDatepicker]="picker">
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6 ">
+
+                                <p>Do you want to add an iTunes preorder?</p>
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button value="1">Yes</mat-radio-button>
+                                    <mat-radio-button value="2">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-3"> <span class="step-number">2</span>Release Genres & Label Info</h4>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Select Primary Genre</mat-label>
+                                    <select matNativeControl [disabled]="disableSelect.value">
+                                        <option value="" selected></option>
+                                        <option value="152">Acoustic</option>
+                                        <option value="129">Adult Contemporary</option>
+                                        <option value="134">Afro-Beat</option>
+                                        <option value="170">Afro-Pop</option>
+                                        <option value="22">Alternative</option>
+                                        <option value="126">Alternative Rap</option>
+                                        <option value="124">Ambient</option>
+                                        <option value="149">Americana</option>
+                                        <option value="154">Axé</option>
+                                        <option value="143">Bachata</option>
+                                        <option value="162">Baile Funk</option>
+                                        <option value="175">Bandas de Baile</option>
+                                        <option value="26">Blues</option>
+                                        <option value="137">Bossa Nova</option>
+                                        <option value="172">Br-Pop</option>
+                                        <option value="110">Brazilian</option>
+                                        <option value="119">Breakbeat</option>
+                                        <option value="32">Children</option>
+                                        <option value="156">Choro</option>
+                                        <option value="117">Christian &amp; Gospel</option>
+                                        <option value="127">Christmas</option>
+                                        <option value="118">Classical</option>
+                                        <option value="138">Classical Crossover</option>
+                                        <option value="35">Comedy</option>
+                                        <option value="37">Country</option>
+                                        <option value="38">Dance</option>
+                                        <option value="164">Death Metal</option>
+                                        <option value="144">Deep House</option>
+                                        <option value="165">Disco</option>
+                                        <option value="139">Disney</option>
+                                        <option value="39">Easy Listening</option>
+                                        <option value="120">Electro House</option>
+                                        <option value="41">Electronic</option>
+                                        <option value="125">Electronica</option>
+                                        <option value="42">Experimental</option>
+                                        <option value="44">Folk</option>
+                                        <option value="161">Forró</option>
+                                        <option value="155">Frevo</option>
+                                        <option value="133">Funk</option>
+                                        <option value="135">Hip Hop/Rap</option>
+                                        <option value="49">Holiday</option>
+                                        <option value="121">House</option>
+                                        <option value="168">Indian Classical</option>
+                                        <option value="116">Indie Rock</option>
+                                        <option value="166">Industrial</option>
+                                        <option value="53">Jazz</option>
+                                        <option value="94">K-Pop</option>
+                                        <option value="57">Latin</option>
+                                        <option value="141">Latin Urban</option>
+                                        <option value="151">Lofi Hip Hop</option>
+                                        <option value="115">Mandopop</option>
+                                        <option value="136">Meditation</option>
+                                        <option value="142">Merengue</option>
+                                        <option value="59">Metal</option>
+                                        <option value="171">Modern Dancehall</option>
+                                        <option value="159">MPB</option>
+                                        <option value="176">Nativista</option>
+                                        <option value="146">Nature</option>
+                                        <option value="60">New Age</option>
+                                        <option value="147">Opera</option>
+                                        <option value="158">Pagode</option>
+                                        <option value="61">Pop</option>
+                                        <option value="177">Pop Leve</option>
+                                        <option value="130">Pop/Rock</option>
+                                        <option value="173">Psychedelic</option>
+                                        <option value="63">Punk</option>
+                                        <option value="132">R&amp;B/Soul</option>
+                                        <option value="66">Reggae</option>
+                                        <option value="140">Reggaeton</option>
+                                        <option value="114">Regional Mexicano</option>
+                                        <option value="145">Relaxation</option>
+                                        <option value="68">Rock</option>
+                                        <option value="128">Salsa</option>
+                                        <option value="157">Samba</option>
+                                        <option value="160">Sertanejo</option>
+                                        <option value="87">Singer/Songwriter</option>
+                                        <option value="167">Smooth Jazz</option>
+                                        <option value="131">Soft Rock</option>
+                                        <option value="70">Soul</option>
+                                        <option value="71">Soundtrack</option>
+                                        <option value="72">Spoken Word</option>
+                                        <option value="122">Techno</option>
+                                        <option value="123">Trance</option>
+                                        <option value="163">Trap</option>
+                                        <option value="74">World</option>
+                                    </select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Select Second Genre</mat-label>
+                                    <select matNativeControl [disabled]="disableSelect.value">
+                                        <option value="" selected></option>
+                                        <option value="152">Acoustic</option>
+                                        <option value="129">Adult Contemporary</option>
+                                        <option value="134">Afro-Beat</option>
+                                        <option value="170">Afro-Pop</option>
+                                        <option value="22">Alternative</option>
+                                        <option value="126">Alternative Rap</option>
+                                        <option value="124">Ambient</option>
+                                        <option value="149">Americana</option>
+                                        <option value="154">Axé</option>
+                                        <option value="143">Bachata</option>
+                                        <option value="162">Baile Funk</option>
+                                        <option value="175">Bandas de Baile</option>
+                                        <option value="26">Blues</option>
+                                        <option value="137">Bossa Nova</option>
+                                        <option value="172">Br-Pop</option>
+                                        <option value="110">Brazilian</option>
+                                        <option value="119">Breakbeat</option>
+                                        <option value="32">Children</option>
+                                        <option value="156">Choro</option>
+                                        <option value="117">Christian &amp; Gospel</option>
+                                        <option value="127">Christmas</option>
+                                        <option value="118">Classical</option>
+                                        <option value="138">Classical Crossover</option>
+                                        <option value="35">Comedy</option>
+                                        <option value="37">Country</option>
+                                        <option value="38">Dance</option>
+                                        <option value="164">Death Metal</option>
+                                        <option value="144">Deep House</option>
+                                        <option value="165">Disco</option>
+                                        <option value="139">Disney</option>
+                                        <option value="39">Easy Listening</option>
+                                        <option value="120">Electro House</option>
+                                        <option value="41">Electronic</option>
+                                        <option value="125">Electronica</option>
+                                        <option value="42">Experimental</option>
+                                        <option value="44">Folk</option>
+                                        <option value="161">Forró</option>
+                                        <option value="155">Frevo</option>
+                                        <option value="133">Funk</option>
+                                        <option value="135">Hip Hop/Rap</option>
+                                        <option value="49">Holiday</option>
+                                        <option value="121">House</option>
+                                        <option value="168">Indian Classical</option>
+                                        <option value="116">Indie Rock</option>
+                                        <option value="166">Industrial</option>
+                                        <option value="53">Jazz</option>
+                                        <option value="94">K-Pop</option>
+                                        <option value="57">Latin</option>
+                                        <option value="141">Latin Urban</option>
+                                        <option value="151">Lofi Hip Hop</option>
+                                        <option value="115">Mandopop</option>
+                                        <option value="136">Meditation</option>
+                                        <option value="142">Merengue</option>
+                                        <option value="59">Metal</option>
+                                        <option value="171">Modern Dancehall</option>
+                                        <option value="159">MPB</option>
+                                        <option value="176">Nativista</option>
+                                        <option value="146">Nature</option>
+                                        <option value="60">New Age</option>
+                                        <option value="147">Opera</option>
+                                        <option value="158">Pagode</option>
+                                        <option value="61">Pop</option>
+                                        <option value="177">Pop Leve</option>
+                                        <option value="130">Pop/Rock</option>
+                                        <option value="173">Psychedelic</option>
+                                        <option value="63">Punk</option>
+                                        <option value="132">R&amp;B/Soul</option>
+                                        <option value="66">Reggae</option>
+                                        <option value="140">Reggaeton</option>
+                                        <option value="114">Regional Mexicano</option>
+                                        <option value="145">Relaxation</option>
+                                        <option value="68">Rock</option>
+                                        <option value="128">Salsa</option>
+                                        <option value="157">Samba</option>
+                                        <option value="160">Sertanejo</option>
+                                        <option value="87">Singer/Songwriter</option>
+                                        <option value="167">Smooth Jazz</option>
+                                        <option value="131">Soft Rock</option>
+                                        <option value="70">Soul</option>
+                                        <option value="71">Soundtrack</option>
+                                        <option value="72">Spoken Word</option>
+                                        <option value="122">Techno</option>
+                                        <option value="123">Trance</option>
+                                        <option value="163">Trap</option>
+                                        <option value="74">World</option>
+                                    </select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <h6>UPC code (Product barcode)</h6>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button value="1"> Automatically assigned </mat-radio-button>
+                            <mat-radio-button value="2">No, I have my own UPC</mat-radio-button>
+                        </mat-radio-group>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Independent</mat-label>
+                                    <mat-select [disabled]="disableSelect.value">
+                                        <mat-option value="option1">Option 1</mat-option>
+                                        <mat-option value="option3">Option 3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <button mat-raised-button color="primary" class="mx-3">Add New Lable </button>
+                            <button mat-raised-button color="warn">Remove</button>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Select Primary Genre</mat-label>
+                                    <select matNativeControl [disabled]="disableSelect.value">
+                                        <option value="" selected></option>
+                                        <option value="2022">2022</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2014">2014</option>
+                                        <option value="2013">2013</option>
+                                        <option value="2012">2012</option>
+                                        <option value="2011">2011</option>
+                                        <option value="2010">2010</option>
+                                        <option value="2009">2009</option>
+                                        <option value="2008">2008</option>
+                                        <option value="2007">2007</option>
+                                        <option value="2006">2006</option>
+                                        <option value="2005">2005</option>
+                                        <option value="2004">2004</option>
+                                        <option value="2003">2003</option>
+                                        <option value="2002">2002</option>
+                                        <option value="2001">2001</option>
+                                        <option value="2000">2000</option>
+                                        <option value="1999">1999</option>
+                                        <option value="1998">1998</option>
+                                        <option value="1997">1997</option>
+                                        <option value="1996">1996</option>
+                                        <option value="1995">1995</option>
+                                        <option value="1994">1994</option>
+                                        <option value="1993">1993</option>
+                                        <option value="1992">1992</option>
+                                        <option value="1991">1991</option>
+                                        <option value="1990">1990</option>
+                                        <option value="1989">1989</option>
+                                        <option value="1988">1988</option>
+                                        <option value="1987">1987</option>
+                                        <option value="1986">1986</option>
+                                        <option value="1985">1985</option>
+                                        <option value="1984">1984</option>
+                                        <option value="1983">1983</option>
+                                        <option value="1982">1982</option>
+                                        <option value="1981">1981</option>
+                                        <option value="1980">1980</option>
+                                        <option value="1979">1979</option>
+                                        <option value="1978">1978</option>
+                                        <option value="1977">1977</option>
+                                        <option value="1976">1976</option>
+                                        <option value="1975">1975</option>
+                                        <option value="1974">1974</option>
+                                        <option value="1973">1973</option>
+                                    </select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label> Copyright Holder</mat-label>
+                                    <input matInput placeholder="Copyright Holder" formControlName="firstCtrl" required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <h4>Language</h4>
+                        <div class="row mt-4">
+                            <div class="col-md-5">
+                                <h6>Is your release an instrumental?</h6>
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button value="1"> Yes </mat-radio-button>
+                                    <mat-radio-button value="2">No </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <div class="col-md-7">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Select Language</mat-label>
+                                    <select matNativeControl [disabled]="disableSelect.value">
+                                        <option value="" selected></option>
+                                        <option value="65">Afrikaans</option>
+                                        <option value="91">Albanian</option>
+                                        <option value="64">Arabic</option>
+                                        <option value="92">Armenian</option>
+                                        <option value="93">Assamese</option>
+                                        <option value="119">Azerbaijani</option>
+                                        <option value="94">Basque</option>
+                                        <option value="67">Bengali</option>
+                                        <option value="95">Bhojpuri</option>
+                                        <option value="96">Bosnian</option>
+                                        <option value="68">Bulgarian</option>
+                                        <option value="70">Cantonese</option>
+                                        <option value="71">Catalan</option>
+                                        <option value="118">Chichewa</option>
+                                        <option value="69">Chinese, Simplified</option>
+                                        <option value="72">Chinese, Traditional</option>
+                                        <option value="73">Croatian</option>
+                                        <option value="74">Czech</option>
+                                        <option value="75">Danish</option>
+                                        <option value="29">Dutch</option>
+                                        <option value="25">English</option>
+                                        <option value="76">Estonian</option>
+                                        <option value="28">Finnish</option>
+                                        <option value="27">French</option>
+                                        <option value="97">Gaelic</option>
+                                        <option value="34">German</option>
+                                        <option value="35">Greek</option>
+                                        <option value="98">Gujarati</option>
+                                        <option value="77">Haitian</option>
+                                        <option value="99">Haryanvi</option>
+                                        <option value="78">Hebrew</option>
+                                        <option value="62">Hindi</option>
+                                        <option value="36">Hungarian</option>
+                                        <option value="37">Icelandic</option>
+                                        <option value="100">Igbo</option>
+                                        <option value="38">Indonesian</option>
+                                        <option value="59" hidden="">Instrumental</option>
+                                        <option value="89">Irish</option>
+                                        <option value="39">Italian</option>
+                                        <option value="40">Japanese</option>
+                                        <option value="79">Kazakh</option>
+                                        <option value="101">Kinyarwanda</option>
+                                        <option value="41">Korean</option>
+                                        <option value="120">Kurdish</option>
+                                        <option value="42">Lao</option>
+                                        <option value="80">Latin</option>
+                                        <option value="43">Latvian</option>
+                                        <option value="44">Lithuanian</option>
+                                        <option value="102">Macedonian</option>
+                                        <option value="45">Malay</option>
+                                        <option value="90">Maori</option>
+                                        <option value="103">Marathi</option>
+                                        <option value="104">Mon-Khmer</option>
+                                        <option value="46">Norwegian</option>
+                                        <option value="105">Ojibwe</option>
+                                        <option value="106">Papiamento</option>
+                                        <option value="81">Persian</option>
+                                        <option value="47">Polish</option>
+                                        <option value="48">Portuguese</option>
+                                        <option value="63">Punjabi</option>
+                                        <option value="49">Romanian</option>
+                                        <option value="50">Russian</option>
+                                        <option value="82">Sanscrit</option>
+                                        <option value="108">Scots</option>
+                                        <option value="109">Serbian</option>
+                                        <option value="110">Shona</option>
+                                        <option value="111">Sindhi</option>
+                                        <option value="112">Sinhala</option>
+                                        <option value="51">Slovak</option>
+                                        <option value="83">Slovenian</option>
+                                        <option value="52">Spanish</option>
+                                        <option value="84">Spanish, Latin America</option>
+                                        <option value="113">Swahili</option>
+                                        <option value="53">Swedish</option>
+                                        <option value="54">Tagalog</option>
+                                        <option value="85">Tamil</option>
+                                        <option value="86">Telugu</option>
+                                        <option value="55">Thai</option>
+                                        <option value="114">Tswana</option>
+                                        <option value="56">Turkish</option>
+                                        <option value="57">Ukrainian</option>
+                                        <option value="87">Urdu</option>
+                                        <option value="115">Uzbek</option>
+                                        <option value="58">Vietnamese</option>
+                                        <option value="116">Welsh</option>
+                                        <option value="117">Wolof</option>
+                                        <option value="88">Zulu</option>
+
+                                    </select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <h3> <span class="step-number"> 3</span>Release Artwork</h3>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+
+
+                                <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+                                <div><img [src]="url" height="200" width="200px" *ngIf="url"></div>
+                                <p>
+                                    <input type="file" (change)="selectFile($event)">
+                                </p>
+                            </div>
+                            <div class="col-md-8">
+                                <h5>Upload Your Own:</h5>
+                                <p> Artwork requirements:</p>
+                                <ul>
+                                    <li>name on artwork MUST match the release name</li>
+                                    <li>file format must be .jpg/.jpeg/.png in RGB Colour (not CMYK)</li>
+                                    <li>file size must be no larger than 10Mb</li>
+                                    <li>image dimensions at least 3000 x 3000 pixels, and perfect square</li>
+                                    <li>art must not contain website addresses or social media links</li>
+                                    <li>do not upsize images as this will cause them to become blurry and may be
+                                        rejected.</li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <h3> <span class="step-number">4</span>Online Stores Availability <button mat-raised-button
+                                color="accent" (click)="checkall()">{{btnVal?"Check All":"Uncheck All"}}</button></h3>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <mat-checkbox [checked]="checked" class="example-margin">Adaptr</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Anghami</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Audiomack</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Boomplay
+                                    (Africa)</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Deezer</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">iHeart
+                                    Radio</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">JioSaavn
+                                    (India)</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Kanjian
+                                    (China)</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin"> Kuaishou</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Mixcloud</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Netease
+                                    (China)</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Pandora</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Pretzel</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Shazam</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Spotify</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Tidal</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Trebel</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Youtube
+                                    Music</mat-checkbox><br />
+
+                            </div>
+                            <div class="col-md-6">
+                                <mat-checkbox [checked]="checked" class="example-margin">Amazon</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Apple Music &
+                                    iTunes</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">AWA
+                                    (Japan)</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked"
+                                    class="example-margin">ClaroMusica</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Flo</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin"> Instagram Stories
+                                    (Facebook)</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">JOOX</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">KKBOX</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked"
+                                    class="example-margin">Medianet/Audible</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Napster</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Opt-in to all future
+                                    services</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Peloton</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Qobuz</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Slacker
+                                    Radio</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Tencent (QQ Music, Kugou,
+                                    Kuwo)</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin"> TikTok</mat-checkbox><br />
+                                <mat-checkbox [checked]="checked" class="example-margin">Triller</mat-checkbox><br />
+                            </div>
+                        </div>
+                        <h3 class="mt-4"> <span class="step-number"> 5</span> Country Availability</h3>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <h6>Is this a worldwide release?</h6>
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button value="1"> Yes </mat-radio-button>
+                                    <mat-radio-button value="2">No, I need to select countries</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div>
+                            <button mat-raised-button color="accent" matStepperNext class="mt-3">Next</button>
+                        </div>
+                    </form>
+
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+                    <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Upload Tracks</ng-template>
+                        <h3>Track list</h3>
+                        <p>Audio Requirements:</p>
+                        <ul>
+                            <li>WAV file format only, 250mb max file size per track</li>
+                            <li>16bit 44.1k, OR 24bit 44.1k,48k,96k,192k ONLY. We do not accept 32bit WAV files</li>
+                            <li>Do not rename file extensions (eg: .mp3 to .wav) without converting the file properly
+                            </li>
+                            <li>25 tracks maximum album size</li>
+
+                        </ul>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Track Name</mat-label>
+                                    <input matInput placeholder="Track Name" formControlName="secondCtrl" required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Track Artist</mat-label>
+                                    <input matInput placeholder="Track Name" formControlName="secondCtrl" required>
+                                </mat-form-field>
+                                <button mat-raised-button color="primary" class="mx-3">Add Another Main Artist</button>
+                                <button mat-raised-button color="warn">Clear</button>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-8">
+                                <mat-form-field appearance="outline">
+                                    <mat-label> Add Feature Artist (Optional)</mat-label>
+                                    <mat-select [disabled]="disableSelect.value">
+                                        <mat-option value="option1">Option 1</mat-option>
+                                        <mat-option value="option3">Option 3</mat-option>
+                                    </mat-select>
+
+                                </mat-form-field>
+                            </div>
+                            <button mat-raised-button color="primary" class="mx-3  mt-2">Create Feature Artist</button>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Instrumentals</mat-label>
+                                    <select matNativeControl [disabled]="disableSelect.value">
+                                        <option value="" selected> </option>
+                                        <option value="49">Romanian</option>
+                                        <option value="50">Russian</option>
+                                        <option value="82">Sanscrit</option>
+                                        <option value="108">Scots</option>
+                                        <option value="109">Serbian</option>
+                                        <option value="110">Shona</option>
+                                        <option value="111">Sindhi</option>
+                                        <option value="112">Sinhala</option>
+                                        <option value="51">Slovak</option>
+                                        <option value="83">Slovenian</option>
+                                        <option value="52">Spanish</option>
+                                        <option value="84">Spanish, Latin America</option>
+                                        <option value="113">Swahili</option>
+                                        <option value="53">Swedish</option>
+                                        <option value="54">Tagalog</option>
+                                        <option value="85">Tamil</option>
+                                        <option value="86">Telugu</option>
+                                        <option value="55">Thai</option>
+                                        <option value="114">Tswana</option>
+                                        <option value="56">Turkish</option>
+                                        <option value="57">Ukrainian</option>
+                                        <option value="87">Urdu</option>
+                                        <option value="115">Uzbek</option>
+                                        <option value="58">Vietnamese</option>
+                                        <option value="116">Welsh</option>
+                                        <option value="117">Wolof</option>
+                                        <option value="88">Zulu</option>
+                                    </select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <h4>Songwriter and Credits</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button value="1"> This is an original song that I own 100% rights to
+                                        distribute </mat-radio-button>
+                                    <mat-radio-button value="2">This is a cover song. For more information on delivering
+                                        covers click here.</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="outline">
+                                        
+                                        <select matNativeControl [disabled]="disableSelect.value">
+                                            <option value="" selected> </option>
+                                            <option value="Acoustic Guitar">Acoustic Guitar</option>
+                                            <option value="Arranger">Arranger</option>
+                                            <option value="Art Director">Art Director</option>
+                                            <option value="Banjo">Banjo</option>
+                                            <option value="Bass Guitar">Bass Guitar</option>
+                                            <option value="Cello">Cello</option>
+                                            <option value="Choir">Choir</option>
+                                            <option value="Conductor">Conductor</option>
+                                            <option value="DJ">DJ</option>
+                                            <option value="Double Bass">Double Bass</option>
+                                            <option value="Drums">Drums</option>
+                                            <option value="Engineer">Engineer</option>
+                                            <option value="Ensemble">Ensemble</option>
+                                            <option value="Flute">Flute</option>
+                                            <option value="Graphic Designer">Graphic Designer</option>
+                                            <option value="Guitar">Guitar</option>
+                                            <option value="Harp">Harp</option>
+                                            <option value="Lyricist">Lyricist</option>
+                                            <option value="Mastering Engineer">Mastering Engineer</option>
+                                            <option value="Mixer">Mixer</option>
+                                            <option value="Narrator">Narrator</option>
+                                            <option value="Orchestra">Orchestra</option>
+                                            <option value="Organ">Organ</option>
+                                            <option value="Piano">Piano</option>
+                                            <option value="Producer">Producer</option>
+                                            <option value="Programmer">Programmer</option>
+                                            <option value="Publisher">Publisher</option>
+                                            <option value="Remixer">Remixer</option>
+                                            <option value="Saxophone">Saxophone</option>
+                                            <option value="Soloist">Soloist</option>
+                                            <option value="Composer" selected="">Songwriter/Composer</option>
+                                            <option value="Synthesizer">Synthesizer</option>
+                                            <option value="Trombone">Trombone</option>
+                                            <option value="Trumpet">Trumpet</option>
+                                            <option value="Viola">Viola</option>
+                                            <option value="Violin">Violin</option>
+                                            <option value="Vocals">Vocals</option>
+                                        </select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label> </mat-label>
+                                        <input matInput placeholder=" " formControlName="secondCtrl">
+                                    </mat-form-field>
+                                    
+                                </div>
+                                <div class="col-md-2"><button mat-raised-button color="accent" class="mt-2">+</button></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="outline">
+                                        
+                                        <select matNativeControl [disabled]="disableSelect.value">
+                                            <option value="" selected> </option>
+                                            <option value="Acoustic Guitar">Acoustic Guitar</option>
+                                            <option value="Arranger">Arranger</option>
+                                            <option value="Art Director">Art Director</option>
+                                            <option value="Banjo">Banjo</option>
+                                            <option value="Bass Guitar">Bass Guitar</option>
+                                            <option value="Cello">Cello</option>
+                                            <option value="Choir">Choir</option>
+                                            <option value="Conductor">Conductor</option>
+                                            <option value="DJ">DJ</option>
+                                            <option value="Double Bass">Double Bass</option>
+                                            <option value="Drums">Drums</option>
+                                            <option value="Engineer">Engineer</option>
+                                            <option value="Ensemble">Ensemble</option>
+                                            <option value="Flute">Flute</option>
+                                            <option value="Graphic Designer">Graphic Designer</option>
+                                            <option value="Guitar">Guitar</option>
+                                            <option value="Harp">Harp</option>
+                                            <option value="Lyricist">Lyricist</option>
+                                            <option value="Mastering Engineer">Mastering Engineer</option>
+                                            <option value="Mixer">Mixer</option>
+                                            <option value="Narrator">Narrator</option>
+                                            <option value="Orchestra">Orchestra</option>
+                                            <option value="Organ">Organ</option>
+                                            <option value="Piano">Piano</option>
+                                            <option value="Producer">Producer</option>
+                                            <option value="Programmer">Programmer</option>
+                                            <option value="Publisher">Publisher</option>
+                                            <option value="Remixer">Remixer</option>
+                                            <option value="Saxophone">Saxophone</option>
+                                            <option value="Soloist">Soloist</option>
+                                            <option value="Composer" selected="">Songwriter/Composer</option>
+                                            <option value="Synthesizer">Synthesizer</option>
+                                            <option value="Trombone">Trombone</option>
+                                            <option value="Trumpet">Trumpet</option>
+                                            <option value="Viola">Viola</option>
+                                            <option value="Violin">Violin</option>
+                                            <option value="Vocals">Vocals</option>
+                                        </select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label> </mat-label>
+                                        <input matInput placeholder=" " formControlName="secondCtrl">
+                                    </mat-form-field>
+                                    
+                                </div>
+                                <div class="col-md-2"><button mat-raised-button color="warn" class="mt-2">-</button></div>
+                            </div>
+                        <h4>TikTok Start Time</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button value="1"> Let the Algorithm decide </mat-radio-button>
+                                    <mat-radio-button value="2">Specify preview start time</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div class="input-group flex-nowrap">
+                                     <input type="text" class="form-control" placeholder="0" aria-label="Username" aria-describedby="addon-wrapping" maxlength="2">
+                                     <span class="input-group-text" id="addon-wrapping">m</span>
+                                      
+                                  </div>
+                                </div>
+                                <div class="col-md-1 mx-2">
+                                    <div class="input-group flex-nowrap">
+                                         <input type="text" class="form-control" placeholder="0" aria-label="Username" aria-describedby="addon-wrapping">
+                                         <span class="input-group-text" id="addon-wrapping" maxlength="2">s</span>
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <h4>Automatically assign an ISRC for this track? </h4>
+                            <div class="row">
+                                <div class="col-md-12 mt-3">
+                                    <mat-radio-group aria-label="Select an option">
+                                        <mat-radio-button value="1">Yes </mat-radio-button>
+                                        <mat-radio-button value="2">No, I already have an ISRC for this track</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Enter existing ISRC </mat-label>
+                                        <input matInput placeholder="AUMEV1800000" formControlName="secondCtrl" required>
+                                    </mat-form-field>
+                                </div>
+
+                            </div>
+                            <mat-checkbox  class="example-margin">This track has explicit lyrics.</mat-checkbox><br />
+
+                        <div>
+
+                            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                            <button mat-raised-button color="primary" class="mx-4" matStepperNext>Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="thirdFormGroup" label="Review & Submit">
+                    <form [formGroup]="thirdFormGroup">
+                        <h4>Youtube Content ID</h4>
+                        <div class="row mt-4">
+                            <div class="col-md-2">
+                                <mat-slide-toggle>ON</mat-slide-toggle>
+                            </div>
+                            <div class="col-md-10">
+                             <p>Click to enable Youtube Content ID. IMPORTANT: You must own 100% of the recording to enable Content ID. No samples or purchased 3rd party beats. Contact Us before you dispute any claims on your Youtube videos. Most likely this will be us claiming the content on your behalf. For more info on Content ID <a href ="#">click here.</a></p>
+                            </div>
+                        </div>
+                        <h4>Submit release</h4>
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                            <h5 class="mb-4">Release details</h5>
+                        </div>
+                             <div class="col-md-3">
+                                <img src="../../../assets/artist-assets/img/1561.jpg" height="200" width="200">
+                             </div>
+                             <div class="col-md-7">
+                               <h5 class="mb-2">Day And Night</h5>
+                              <p>Release Date: 28th Nov, 2022<br /> Number of Tracks: 1</p>
+                              <p></p>
+                             </div>
+                        </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="mt-5 mb-3">
+                                Acknowledgements 
+                            </h4>
+                            <mat-checkbox class="example-margin">I own the copyright for this music and I am authorised to sell it and collect royalties.</mat-checkbox>
+                        </div>
+                        <div class="col-md-12">
+                            <mat-checkbox class="example-margin">I understand tracks may be rejected from stores if they are not correctly labelled as explicit or if formatting is inaccurate.</mat-checkbox>
+                        </div>
+                        <div class="col-md-12">
+                            <mat-checkbox class="example-margin">I am not using any other artist's name, song title, or album title without their consent.</mat-checkbox>
+                        </div>
+                        <div class="col-md-12">
+                            <mat-checkbox class="example-margin">I agreed to the updated TERMS OF SERVICE AND PRIVACY POLICY (2023) and acknowledge they are applicable to this transaction.</mat-checkbox>
+                        </div>
+                      </div>
+
+                     
+                      <div>
+                        <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" class="mx-4" matStepperNext (click)="openDialog()">Save</button>
+                      </div>
+                      
+                    </form>
+                  </mat-step>
+            </mat-stepper>
+        </div>
+    </div>
+</div>

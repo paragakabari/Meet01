@@ -1,0 +1,23 @@
+.fs{
+    color: green;
+    margin-right: 5px;
+}
+
+.step-number {
+    border-radius: 18px;
+    background: #0087C4FF;
+    color: #FFFFFFFF;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 31px;
+    margin-right: 15px;
+    text-align: center;
+    vertical-align: text-bottom;
+    width: 28px;
+    height: 28px;
+    margin-left: 5px;
+}
+mat-form-field{
+    width: 100%;
+} 

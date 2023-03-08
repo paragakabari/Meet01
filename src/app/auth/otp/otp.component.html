@@ -1,0 +1,84 @@
+<div id="main-wrapper" class="oxyy-login-register">
+    <div class="hero-wrap d-flex align-items-center">
+      <div class="hero-mask opacity-4 bg-secondary"></div>
+      <div class="hero-bg hero-bg-scroll" style="background-image:url('assets/auth-assets/images/login-bg-3.jpg');"></div>
+      <div class="hero-content w-100">
+        <div class="container">
+          <div class="row g-0 min-vh-100"> 
+            <!-- Welcome Text
+            ========================= -->
+            <div class="col-md-6 d-flex flex-column">
+              <div class="row g-0 my-auto">
+                <div class="col-11 col-sm-10 col-lg-9 mx-auto text-center">
+                  <div class="logo mt-5 mb-3"> <a href="index-2.html" title="Oxyy"><img src="assets/auth-assets/images/logo-lg-light.png" alt="Oxyy"></a> </div>
+                  <h1 class="text-5 fw-400 text-white mb-5">We are glad to see you again!</h1>
+                  <p><img src="assets/auth-assets/images/qr-code.jpg" class="shadow-lg" alt="qr code"></p>
+                  <p class="text-white mb-0">Log In with QR Code</p>
+                  <p class="text-light text-2 mx-lg-5">Scan this with your camera or our mobile app to login instantly.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Welcome Text End --> 
+            
+            <!-- OTP Form
+            ========================= -->
+            <div class="col-md-6 d-flex align-items-center py-5">
+              <div class="container my-auto py-4 shadow-lg bg-white">
+                <div class="row">
+                  <div class="col-11 col-lg-10 mx-auto">
+                    <h3 class="text-9 fw-600 text-center my-3">Validate OTP</h3>
+                    <p class="text-center"><img class="img-fluid" src="assets/auth-assets/images/otp-icon.png" alt="verification"></p>
+                    <p class="text-muted text-center mb-4">Please enter the OTP (one time password) to verify your account. A code has been sent to <span class="text-dark text-4">+1*******179</span></p>
+                    <p class="text-dark text-center fw-600 mb-3">Enter 4 digit code</p>
+                    <form id="otp-screen" method="post">
+                      <div class="row g-3">
+                        <div class="col">
+                          <input type="text" class="form-control rounded-0 text-center text-6 py-2" maxlength="1" required autocomplete="off">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control rounded-0 text-center text-6 py-2" maxlength="1" required autocomplete="off">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control rounded-0 text-center text-6 py-2" maxlength="1" required autocomplete="off">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control rounded-0 text-center text-6 py-2" maxlength="1" required autocomplete="off">
+                        </div>
+                      </div>
+                      <div class="d-grid my-4">
+                          <button class="btn btn-dark rounded-0" type="submit">Verify</button>
+                      </div>
+                    </form>
+                    <p class="text-center">Not received your code? <a href="#"><u>Resend code</u></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- OTP Form End --> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="registrationForm" (ngSubmit)="verifyOtp()">
+
+
+  
+    <div>
+      <label>otp:</label>
+      <input type="otp" formControlName="otp">
+      <div *ngIf="otp.errors && (otp.dirty || otp.touched)">
+        <div *ngIf="otp.errors.required">
+          otp is required.
+        </div>
+        <div *ngIf="otp.errors.minlength">
+          otp must be at least {{ otp.errors.minlength.requiredLength }} characters long.
+        </div>
+      </div>
+    </div>
+  
+  
+    <div>
+      <button type="submit" [disabled]="!registrationForm.valid">verifyOtp</button>
+    </div>
+  </form>
